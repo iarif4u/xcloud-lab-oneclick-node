@@ -1,0 +1,35 @@
+schema_version: 1
+slug: node-hello
+name: Node Hello
+description: Express hello app without a database
+version: 1.0.0
+app_version: 17834b2
+icon: icon.png
+service_class: web_app
+runtime: node_pm2
+files:
+  env: .env.tpl
+source:
+  repo: https://github.com/heroku/node-js-getting-started.git
+  ref: 17834b2d28824182464f799a809aac3497cd888f
+node:
+  version: '24'
+  package_manager: npm
+commands:
+  install: npm ci --no-audit --no-fund
+  start: npm start
+ports:
+  app:
+    protocol: http
+    exposure: proxy
+    primary: true
+fields:
+  - key: greeting
+    default: Hello
+    validation: string
+generated_values:
+  secret:
+    type: random
+    length: 32
+healthcheck:
+  path: /
