@@ -17,7 +17,6 @@ node:
   package_manager: npm
 commands:
   install: npm ci --no-audit --no-fund
-  build: sleep 35
   start: npm start
 ports:
   app:
