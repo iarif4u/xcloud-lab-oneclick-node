@@ -17,8 +17,6 @@ php:
   document_root: web
 commands:
   install: composer install --no-dev --no-interaction --prefer-dist
-  build: >-
-    if [ -f "$HOME/.qa7905-fail-build" ]; then echo "QA7905 deliberate build failure"; exit 42; fi; sleep 35
 fields:
   - key: greeting
     default: Hello
