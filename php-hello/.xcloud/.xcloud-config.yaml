@@ -1,0 +1,27 @@
+schema_version: 1
+slug: php-hello
+name: PHP Hello
+description: PHP hello app without a database
+version: 1.0.0
+app_version: 6f4399c
+icon: icon.png
+service_class: web_app
+runtime: php_fpm
+files:
+  env: .env.tpl
+source:
+  repo: https://github.com/heroku/php-getting-started.git
+  ref: 6f4399c99143b18bd35ff544314aa40d98cc78e5
+php:
+  version: '8.4'
+  document_root: web
+commands:
+  install: composer install --no-dev --no-interaction --prefer-dist
+fields:
+  - key: greeting
+    default: Hello
+    validation: string
+generated_values:
+  secret:
+    type: random
+    length: 32
